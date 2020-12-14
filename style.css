@@ -1,33 +1,32 @@
 :root {
-    background-color: rgb(29, 26, 26);
+  background-color: rgb(29, 26, 26);
 }
 
 body {
-    background-color: rgb(29, 26, 26)
+  background-color: rgb(29, 26, 26);
 }
 
 .jumbotron {
-    text-align: center;
-    background-color: rgb(29, 26, 26);
-    color: #fff;
+  text-align: center;
+  background-color: rgb(29, 26, 26);
+  color: #fff;
 }
 
 .search {
-
 }
 
 .container {
-    background-color: rgb(29, 26, 26);
-    color: #fff;
+  background-color: rgb(29, 26, 26);
+  color: #fff;
 }
 
 .btn {
-    color: #42a5f5;
+  color: #42a5f5;
 }
 
 .btn:hover {
-    cursor: pointer;
-    box-shadow: 0 0.4rem 1.4rem 0 #42a5f5;
-    transition: transform 150ms;
-    transform: scale(1.03);
+  cursor: pointer;
+  box-shadow: 0 0.4rem 1.4rem 0 #42a5f5;
+  transition: transform 150ms;
+  transform: scale(1.03);
 }
