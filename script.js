@@ -7,7 +7,7 @@ const humidty = $("#humidity");
 const windSpeed = $("#wind-speed");
 const uvIndexList = $("#uv-index");
 const apiKey = "cfab7f3712be5d9f10bb02b720dcb30c"
-const api = "http://api.openweathermap.org/data/2.5/forecast?id=524901&appid="
+const api = "http://api.openweathermap.org/data/2.5/forecast?id=4887398&appid="
 const list = $(".list-group")
 
 var cityArray = JSON.parse(localStorage.getItem("cityname")) || []
@@ -49,7 +49,7 @@ function getWeather() {
         var weathericon = response.list[0].weather.icon;
         var iconurl = "https://openweathermap.org/img/wn/" + weathericon + "@2x.png";
         presentCity.html(response.city.name + "(" + date + ")" + "<img src=" + iconurl + ">");
-        var tempC = (response.list[0].main.temp - 273.15);
+        var tempC = (((response.list[0].main.temp - 273.15) * 1.8) + 32);
         $(presentTemperature).html(" " + tempC.toFixed(2) + " Fahrenheit");
         $(humidty).html(" " + response.list[0].main.humidity + "%");
 
@@ -98,12 +98,12 @@ function forecast(cityid) {
             var iconcode = response.list[i].weather[0].icon;
             var iconurl = "https://openweathermap.org/img/wn/" + iconcode + ".png";
             var tempK = response.list[i].main.temp;
-            var tempC = (tempK - 273.5);
+            var tempF = (((tempK - 273.15) * 1.8) + 32);
             var humidity = response.list[i].main.humidity;
             var fDays = parseInt(day + i)
             $("#fDate" + i).html(" " + fDays + "." + month);
             $("#fImg" + i).html("<img src=" + iconurl + ">");
-            $("#fTemp" + i).html(tempC.toFixed(2));
+            $("#fTemp" + i).html(tempF.toFixed(2));
             $("#fHumidity" + i).html(humidity + "%");
         }
     });
