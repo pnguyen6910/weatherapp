@@ -7,7 +7,7 @@ const humidty = $("#humidity");
 const windSpeed = $("#wind-speed");
 const uvIndexList = $("#uv-index");
 const apiKey = "cfab7f3712be5d9f10bb02b720dcb30c"
-const api = "http://api.openweathermap.org/data/2.5/forecast?id=4887398&units=imperial&appid="
+const api = "http://api.openweathermap.org/data/2.5/forecast?id=524901&appid="
 const list = $(".list-group")
 
 var cityArray = JSON.parse(localStorage.getItem("cityname")) || []
@@ -45,14 +45,15 @@ function getWeather() {
         url: api + apiKey,
         method: "GET"
     }).then(response => {
-        var weathericon = response.weather[0].icon;
+        console.log(response)
+        var weathericon = response.list[0].weather.icon;
         var iconurl = "https://openweathermap.org/img/wn/" + weathericon + "@2x.png";
-        $(presentCity).html(response.name + "(" + date + ")" + "<img src=" + iconurl + ">");
-        var tempC = (response.main.temp - 273.15);
-        $(presentTemperature).html(" " + tempC.toFixed(2) + " Celsius");
-        $(humidty).html(" " + response.main.humidity + "%");
+        presentCity.html(response.city.name + "(" + date + ")" + "<img src=" + iconurl + ">");
+        var tempC = (response.list[0].main.temp - 273.15);
+        $(presentTemperature).html(" " + tempC.toFixed(2) + " Fahrenheit");
+        $(humidty).html(" " + response.list[0].main.humidity + "%");
 
-        var responsWindSpeed = response.wind.speed;
+        var responsWindSpeed = response.list[0].wind.speed;
         var winds = responsWindSpeed;
         $(windSpeed).html(" " + winds + "m/s");
 
@@ -70,6 +71,7 @@ function uvIndex(ln, lt) {
         url: uvqURL,
         method: "GET"
     }).then(function (response) {
+        console.log(response);
         if (response.value < 2) {
             $(uvIndexList).html(" " + response.value);
             $(uvIndexList).css("background-color", "lightgreen")
