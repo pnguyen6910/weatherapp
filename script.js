@@ -7,7 +7,7 @@ const humidty = $("#humidity");
 const windSpeed = $("#wind-speed");
 const uvIndexList = $("#uv-index");
 const apiKey = "cfab7f3712be5d9f10bb02b720dcb30c"
-const api = "http://api.openweathermap.org/data/2.5/forecast?id=4887398&appid="
+const api = "https://api.openweathermap.org/data/2.5/forecast?id=4887398&appid="
 const list = $(".list-group")
 
 var cityArray = JSON.parse(localStorage.getItem("cityname")) || []
